@@ -1,0 +1,57 @@
+/* UserSwitch.css */
+.user-switch-container {
+    background-size: cover; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; /* 子元素垂直排列 */
+    justify-content: center; /* 子元素從頂部開始排列 */
+    align-items: center;
+    padding-top: 50px; /* 頂部間距 */
+  }
+  
+  /* 標題的類，假設您的HTML中標題有這個類 */
+  .user-switch-container h2 { 
+    margin-bottom: 40px; /* 標題下方的間距 */
+  }
+  
+  .users-list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* 如果設置了特定高度，移除它讓元素自然佔據所需高度 */
+  }
+
+  .user-card {
+    display: flex; /* 应用flex布局 */
+    justify-content: center; /* 水平居中对齐内容 */
+    align-items: center; /* 垂直居中对齐内容 */
+    /* 如果需要，为 .user-card 添加固定的宽度和高度 */
+  }
+  
+  .user-card img {
+    width: 64px; /* 您希望的尺寸 */
+    height: 64px;
+    object-fit: cover; /* 保持圖像比例 */
+  }
+  
+  .add-user-button {
+    width: 64px; /* 按鈕的寬度 */
+    height: 64px; /* 按鈕的高度 */
+  
+    border: 2px solid #ffffff; /* 白色實線邊框 */
+    border-radius: 0; /* 無圓角 */
+  
+    color: #ffffff; /* 按鈕內文本顏色 */
+    font-size: 50px; /* 加號大小 */
+    
+    display: flex; /* 使用flexbox來對齊內容 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    
+  
+    background: none; /* 無背景色 */
+    cursor: pointer; /* 鼠標樣式 */
+    text-decoration: none; /* 移除文本裝飾 */
+  }
+  
+  

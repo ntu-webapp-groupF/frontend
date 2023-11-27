@@ -1,0 +1,60 @@
+.sign-page{
+    background-size: cover; 
+    height: 100vh; 
+    display: flex; 
+    align-items: center;
+    justify-content:center;
+    margin-top: 30px;
+}
+
+.signup-form-container {
+    background-color:#FF870E;
+    padding: 40px;
+    width: 300px; /* 或根據需要調整 */
+}
+  
+.signup-form-container h2 {
+    color: #ffffff; /* 根據您的圖片，可能需要調整顏色 */
+    margin-bottom: 16px;
+  }
+  
+.signup-form-container p {
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+  
+.signup-form-container form {
+    margin-bottom: 16px;
+  }
+  
+  .signup-form-container input[type="text"],
+  .signup-form-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+  }
+  
+  .signup-form-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #000000; /* 按鈕背景色 */
+    color: #ffffff;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  /* .signup-form-container button:hover {
+    background-color: rgb(244, 0, 0);
+  }
+   */
+.signup-form-container label {
+    display: block;
+    margin-top: 20px;
+    color: #ffffff;
+    text-align: left;
+  }
+
+
+  

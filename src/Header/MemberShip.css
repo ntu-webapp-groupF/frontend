@@ -1,0 +1,42 @@
+.pricing-plan-container {
+    background-color: #f8b400; /* Adjust the color to match your brand */
+    padding: 20px;
+    text-align: center;
+    margin-top:100px;
+  }
+  
+  .pricing-plan-container h1 {
+    margin-bottom: 24px;
+  }
+  
+  .plans {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  
+  .plan {
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .selected {
+    border-color: #fff; /* Selected plan border color */
+  }
+  
+  button {
+    background-color: #e89500; /* Button background color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #db8500; /* Button hover state color */
+  }
+  
