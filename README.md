@@ -5,6 +5,19 @@
 2. type `yarn dev`
 3. visit `http://localhost:5173` to see your website
 
+## Frontend Path
+* `http://localhost:5173` -> 主頁，使用者點進來網頁看到的畫面
+* `http://localhost:5173/users/login` -> Login Page
+* `http://localhost:5173/users/register` -> Register Page
+* `http://localhost:5173/member` -> Member Page，會員畫面
+* `http://localhost:5173/books` -> 登入成功後會看到的畫面，推薦書的那個畫面
+* `http://localhost:5173/books/filter` -> 當使用者使用 filter 功能的時候的畫面，如搜尋特定的繪本，看已收藏的繪本，已經購買的書本等等...
+* `http://localhost:5173/reads` -> 看繪本內容的畫面
+* `http://localhost:5173/edit` -> Profile Page
+* `http://localhost:5173/edit/profile` -> 使用者更改自己的資訊的畫面
+* `http://localhost:5173/edit/book` -> 創建一本繪本的畫面
+* `http://localhost:5173/purchase` -> 購買書本時的畫面
+
 ## Get data from backend
 ### What function and defined at where?
 checkout `/src/api/{book, category, content, rate, user}.js`
