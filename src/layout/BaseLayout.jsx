@@ -3,16 +3,25 @@ import MainPage from '../pages/MainPage';
 import FilterPage from '../pages/FilterPage';
 import ErrorPage from "../pages/ErrorPage";
 
+import BaseLayoutHeader from "../components/BaseLayoutHeader";
+import { Layout } from "antd";
+
+const { Header, Content } = Layout;
+
 const BaseLayout = () => {
     return (
-        <div>
-            Base Layout
-            <Routes>
-                <Route path='/' element={<MainPage />} />
-                <Route path='/filter' element={<FilterPage />} />
-                <Route path='*' element={<ErrorPage />} />
-            </Routes>
-        </div>
+        <Layout>
+            <Header style={{backgroundColor: '#FECC99', height: '128px'}}>
+                <BaseLayoutHeader />
+            </Header>
+            <Content style={{backgroundColor: '#FECC99', minHeight: '100vh', maxHeight: '100%'}}>
+                <Routes>
+                    <Route path='/' element={<MainPage />} />
+                    <Route path='/filter' element={<FilterPage />} />
+                    <Route path='*' element={<ErrorPage />} />
+                </Routes>
+            </Content>
+        </Layout>
     )
 }
 
