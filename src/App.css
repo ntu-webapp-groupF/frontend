@@ -1,132 +1,42 @@
-/* HEADER */
-header {
-  padding: 10px;
-  position: fixed;
-  top: 0;
-
-  display: grid;  
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-column-gap: 5px;
-  grid-template-areas: "nt mn mn sb . . . "; 
-  
-  background-color: var(--primary);
-  width: 100%;
-  margin-bottom: 0px;  
-  margin-top: 0px;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
-.TaleHugLogo {
-  grid-area: nt;
-  object-fit: cover;
-  width: 100px;
-  max-height: 100%;
-  
-  padding-left: 30px;
-  padding-top: 0px;  
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
-.TaleHugLogo img {
-  height: 35px;     
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
-/* #logo {
-  color: #FFCC99;  
-  margin: 0; 
-  padding: 0; 
-} */
-
-/* .main-nav{
-  grid-area: mn;
-  padding: 0 30px 0 20px;
-
-}
-.main-nav a {
-  color: var(--light);
-  text-decoration: none;
-  margin: 5px;  
-}
-.main-nav a:hover {
-  color: var(--dark);
-} */
-/* Assuming your main content area is defined as a CSS grid container */
-
-.main-nav {
-  grid-area: mn;
-  display: flex;
-  justify-content: left; /* This centers the nav items */
-  padding: 0 30px;
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.main-nav a {
-  color: #ffffff;
-  font-weight: 900;
-  text-decoration: none;
-  margin: 5px; /* Adjust as needed */
-  /* Rest of your styles */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.main-nav a:hover {
-  color: var(--dark);
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-
-/* .sub-nav {
-  grid-area: sb;
-  padding: 0 40px 0 40px;
-} */
-.sub-nav {
-  /* grid-area: sb;
-  padding: 0 40px 0 40px;  */
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-}
-.sub-nav a {
-  color: var(--light);
-  text-decoration: none;
-  margin: 5px;
-  cursor: pointer;
-}
-.sub-nav a:hover {
-  color: var(--dark);
-}
-.sub-nav img{
-  width: 50px; /* 圖片寬度，需要和高度相同 */
-  height: 50px; /* 圖片高度，需要和寬度相同 */
-  object-fit: cover; /* 確保圖片按比例填充且不失真 */
+.card {
+  padding: 2em;
 }
 
-
-
-
-
-
-
-/* MAIN CONTIANER */
-.main-container {
-  margin-top: 50px;
-  padding: 50px;
-}
-
-.MyList {
-  margin-top: 50px;
-  padding: 50px;
-}
-.box {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(7, minmax(100px, 1fr));
-}
-.box a {
-  transition: transform .3s;  
-}
-.box a:hover {
-  transition: transform .3s;
-  -ms-transform: scale(1.4); /* 這行是為了支持舊版的IE瀏覽器 */
-  -webkit-transform: scale(1.4); /* 這行是為了支持舊版的Safari瀏覽器 */
-  transform: scale(1.3); /* 標準語法，放大效果 */
-}
-.box img {
-  width: 100px; /* 圖片寬度，需要和高度相同 */
-  height: 100px; /* 圖片高度，需要和寬度相同 */
-  border-radius: 50%; /* 這會將圖片變為圓形 */
-  object-fit: cover; /* 確保圖片按比例填充且不失真 */
+.read-the-docs {
+  color: #888;
 }
