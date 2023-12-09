@@ -1,34 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Button } from "antd"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const clickFunc = async () => {
+    //const response = await userApi.login('admin', 'z0U6aFWoKw8Q');
+    //console.log(response); // response.status, response.data
+    //const response = await userApi.logout();
+    //console.log(response)
+    //const response = await userApi.register('wzwr', '123123')
+    //console.log(response)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Button type="primary" onClick={clickFunc}>Click me</Button>
   )
 }
 
