@@ -62,6 +62,18 @@ export const bookApi = {
             return parseApiResponse(err);
         }
     },
+    async createBooks(formData){
+        try{
+            const response = await api.post(BOOK_BASE_URL + '/', formData, {
+                headers: {
+                    'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
+                }
+            });
+            return parseApiResponse(response);
+        } catch( err ){
+            return parseApiResponse(err);
+        }
+    },
     // createBooks send by form
     async purchasedBooks(book_id){
         try {

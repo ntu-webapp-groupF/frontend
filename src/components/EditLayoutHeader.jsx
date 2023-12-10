@@ -15,7 +15,7 @@ const EditLayoutHeader = () => {
     return (
         <Flex justify="flex-start" align="center">
             <div>
-                <Button onClick={onClickBack} type='text' style={{ width: '64px', height: '64px'}} icon={<ArrowLeftOutlined style={{fontSize: '64px'}} />} />
+                <Button onClick={onClickBack} type='text' style={{ width: '48px', height: '48px'}} icon={<ArrowLeftOutlined style={{fontSize: '48px'}} />} />
             </div>
         </Flex>
     )
