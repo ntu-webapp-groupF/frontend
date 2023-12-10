@@ -4,6 +4,7 @@ import { useState } from "react";
 import { PlusOutlined } from '@ant-design/icons';
 import { bookApi } from "../api/book";
 
+//TODO: 這頁也可以拿來參考，基本上我是把上傳繪本的那頁跟功能做完了，基本上改的話就改 CSS 就好了，其他功能如果不清楚最好不要動XD
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {

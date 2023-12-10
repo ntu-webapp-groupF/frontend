@@ -2,7 +2,7 @@ import { Flex, Typography, Input, Button, Checkbox, message } from "antd"
 import { useState } from "react"
 import { userApi } from '../api/user'
 import { useNavigate } from "react-router-dom"
-
+//TODO: 可以更改這頁，也可以在設計 register page 的時候參考這頁
 const LoginPage = () => {
 
     const navigate = useNavigate();
