@@ -1,7 +1,7 @@
 import { Typography } from "antd"
 const UserLayoutHeader = () => {
     return (
-        <Typography.Title level={1} style={{ color: '#FC9F42' }}>TaleHug</Typography.Title>
+        <Typography.Title level={1} style={{ fontFamily: 'Roboto Condensed', color: '#FC9F42' }}>TaleHug</Typography.Title>
     )
 }
 
