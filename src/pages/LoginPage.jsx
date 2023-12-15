@@ -47,25 +47,29 @@ const LoginPage = () => {
             setPassword('');
         }
     }
-
     return (
-        <Flex vertical justify="center" align="center" style={{ width: '50%', backgroundColor: '#FC9F42', padding: 0, paddingBottom: 130}} gap={64}>
+        <Flex wrap='wrap' vertical justify="center" align="center" style={{fontWeight:600, width: '50%',backgroundColor: '#FF870EBF'
+        , padding: 0, paddingBottom: 0 , borderRadius:'20px'}} gap={30}>
             {contextHolder}
-            <Typography.Title level={1} style={{ color: 'white', fontSize: '64px' }}>SIGN IN</Typography.Title>
-            <Flex vertical gap="middle" style={{ width: '50%'}}>
-                <Input placeholder='user name' value={username} onChange={e => setUsername(e.target.value)} />
-                <Input.Password placeholder='password' value={password} onChange={e => setPassword(e.target.value)} />
-                <Flex vertical>
-                    <Button onClick={onLogin} type='primary' style={{ width: '100%', borderRadius:0, backgroundColor: 'black' }}>Sign In</Button>
-                    <Flex justify="space-between" align="center">
-                        <Checkbox>Remember me</Checkbox>
-                        <a href='#' style={{color: 'gray'}}>Need help?</a>
-                    </Flex>
+            <Typography.Title level={1} style={{ fontFamily: 'Bungee', color: 'white', fontSize: '64px', fontWeight: 'lighter'}}>SIGN IN</Typography.Title>
+            <Flex vertical gap="large" style={{ width: '60%'}}>
+
+                <Input placeholder='user name' value={username} onChange={e => setUsername(e.target.value)} style={{padding:'10px',fontSize:'17px'}}/>
+                <Input.Password placeholder='password' value={password} onChange={e => setPassword(e.target.value)} style={{padding:'10px',fontSize:'17px'}} />
+                
+                <Flex vertical style={{alignItems:'center'}}>
+                    <Button onClick={onLogin} type='primary' style={{ width: '60%', borderRadius:'20px', backgroundColor: 'black'}}>Sign In</Button>
                 </Flex>
+
+                <Flex wrap='wrap'justify="space-between" align="center">
+                        <Checkbox style={{alignItems:'left',fontSize:'large'}}>Remember me</Checkbox>
+                        <a href='#' style={{color: 'gray',fontSize:'large'}}>Need help?</a>
+                </Flex>
+                
             </Flex>
             <Flex style={{ width: '100%' }} align="center" justify="center" gap="small">
-                <p>New to Talehug?</p>
-                <a href="/users/register">Sign up now.</a>
+                <p style={{fontSize:'large'}}>New to Talehug?</p>
+                <a href="/users/register" style={{fontSize:'large'}}>Sign up now.</a>
             </Flex>
         </Flex>
     )
