@@ -8,7 +8,7 @@ import Section from './Section';
 
 
 // TODO: 底下是如何拿到所有繪本，及怎麼拿到他的封面（第1張照片）的範例，基本上照著參考就會知道怎麼拿其他的頁面了，如果不知道資料的結構的話記得 console.log 看一下
-const MainPage = () => {
+const MyCollection = () => {
 
     const [books, setBooks] = useState([]);
     const [suggestedBooks, setSuggestedBooks] = useState([]);
@@ -87,4 +87,4 @@ const MainPage = () => {
     )
 }
 
-export default MainPage
+export default MyCollection
