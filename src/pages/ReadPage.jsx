@@ -1,6 +1,7 @@
 import { Flex, Layout, Button, message } from 'antd';
 import UserLayoutHeader from "../components/UserLayoutHeader"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { useLocation } from "react-router-dom"
 import {
     LeftOutlined, RightOutlined
 } from '@ant-design/icons';
@@ -10,11 +11,15 @@ import { Buffer } from 'buffer';
 
 const { Header, Content } = Layout
 //TODO:  使用者讀書的時候會跳轉到這頁
-const ReadPage = (bookid) => {
+const ReadPage = () => {
+
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const bookid = searchParams.get('bookId');
 
     const [ currentPageId, setCurrentPageId ] = useState(0);
-    const [ leftPage, setLeftPage ] = useState(null);
-    const [ rightPage, setRightPage ] = useState(null);
+    const [ leftPage, setLeftPage ] = useState(sample);
+    const [ rightPage, setRightPage ] = useState(sample);
     const [ lastPageId, setLastPageId ] = useState(-1);
     const [ messageApi, contextHolder ] = message.useMessage();
 
@@ -95,11 +100,11 @@ const ReadPage = (bookid) => {
     };
 
     return (
-        <Layout style={{opacity: 0.9}}>
+        <Layout style={{opacity: 0.9, minHeight: '100vh'}} >
             <Header style={{backgroundColor: '#FECC99', height: '128px'}}>
                 <UserLayoutHeader />
             </Header>
-            <Content style={{backgroundColor: '#FECC99', minHeight: '100vh', maxHeight: '100%', display: 'flex', alignItems: 'center'}}>
+            <Content style={{backgroundColor: '#FECC99', display: 'flex', alignItems: 'center'}}>
                 <>
                 <Flex wrap='wrap' vertical gap={50} justify='center' align='center' style={{ width: '100%', height: '100%'}}>
                     <Flex gap={20} justify='center' align='center' style={{ width: '100%', height: '95%'}}>
