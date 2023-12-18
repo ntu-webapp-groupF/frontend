@@ -1,4 +1,4 @@
-import { Button, message, Flex, Form, Input, InputNumber, Modal, Upload } from "antd"
+import { Button, message, Flex, Form, Input, InputNumber, Modal, Upload, Typography } from "antd"
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
 import { PlusOutlined } from '@ant-design/icons';
@@ -121,6 +121,7 @@ const UploadPage = () => {
         <>
         <Flex justify="center" align="center" style={{width: 'full', height: 'full'}} gap={64} wrap="wrap">
             <Flex vertical style={{ width: '50%', height: 'full'}} >
+                <Typography.Title>Upload Page</Typography.Title>
                 <Form form={form} layout='vertical' style={{ width: 'full', height: 'full'}} >
                     <Form.Item label='' name='title'>
                         <Input placeholder='Title name' style={{ height: 64 }} />

@@ -1,8 +1,8 @@
 import { Flex, Typography, Input, Button, Checkbox, message } from "antd"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { userApi } from '../api/user'
 import { useNavigate } from "react-router-dom"
-//TODO: 可以更改這頁，也可以在設計 register page 的時候參考這頁
+
 const LoginPage = () => {
 
     const navigate = useNavigate();
@@ -28,6 +28,16 @@ const LoginPage = () => {
             content: warning_message
         });
     }
+
+    useEffect(() => {
+        const checkLogined = async () => {
+            const response = await userApi.getCurrentUser();
+            if( response && response.status === 200 ){
+                navigate('/books');
+            }
+        }
+        checkLogined();
+    }, [navigate])
 
     const onLogin = async () => {
         const submit_username = username.trim();

@@ -43,7 +43,7 @@ export const userApi = {
     },
     async edit(username, old_password, new_password){
         try {
-            const response = await api.put(USER_BASE_URL + '/', {
+            const response = await api.put(USER_BASE_URL + '/update', {
                 username, old_password, new_password
             });
             return parseApiResponse(response);
@@ -53,7 +53,7 @@ export const userApi = {
     },
     async joinMember(id){
         try {
-            const response = await api.post(USER_BASE_URL + `/${id}`);
+            const response = await api.post(USER_BASE_URL + `/add/${id}`);
             return parseApiResponse(response);
         } catch (err) {
             return parseApiResponse(err);

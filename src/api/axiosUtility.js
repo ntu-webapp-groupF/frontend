@@ -12,7 +12,7 @@ export const parseApiResponse = (response) => {
                 data: res.data.message
             }
         }
-        else if( response.data ){
+        else if( res.data.data ){
             return {
                 status: res.status,
                 data: res.data.data

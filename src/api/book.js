@@ -12,6 +12,14 @@ export const bookApi = {
             return parseApiResponse(err)
         }
     },
+    async getBookById(book_id){
+        try{
+            const response = await api.get(BOOK_BASE_URL + `/${book_id}`);
+            return parseApiResponse(response)
+        } catch (err) {
+            return parseApiResponse(err)
+        }
+    },
     async getRecommendBooks(){
         try {
             const response = await api.get(BOOK_BASE_URL + '/recommends');
@@ -85,7 +93,7 @@ export const bookApi = {
     },
     async addBookToCollections(book_id){
         try {
-            const response = await api.post(BOOK_BASE_URL + `/collections/${book_id}`);
+            const response = await api.post(BOOK_BASE_URL + `/collection/${book_id}`);
             return parseApiResponse(response);
         } catch (err) {
             return parseApiResponse(err);

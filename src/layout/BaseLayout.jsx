@@ -5,10 +5,15 @@ import ErrorPage from "../pages/ErrorPage";
 
 import BaseLayoutHeader from "../components/BaseLayoutHeader";
 import { Layout } from "antd";
-
+import { useEffect } from "react";
 const { Header, Content } = Layout;
 
 const BaseLayout = () => {
+
+    useEffect(() => {
+        document.body.style.backgroundImage = `url()`
+    }, [])
+
     return (
         <Layout>
             <Header style={{backgroundColor: '#FECC99', height: '128px'}}>

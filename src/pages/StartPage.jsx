@@ -1,29 +1,39 @@
-/*
-import { useEffect } from "react"
-import { userApi } from "../api/user"
+import { Flex } from "antd";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
-*/
 
-// TODO: 這頁面是點進來我們系統的第一頁，也就是有 Who's Reading 的那頁
-const StartPage = () => {
-
-    /*
+const MyComponent = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const checkLogined = async () => {
-            const response = await userApi.getCurrentUser();
-            if( response.status === 200 ){
-                // Nagivate to main page
-                navigate('/books');
-            }
-        }
-        checkLogined();
-    }, [navigate])
-    */
+    const navigateToLogin = () => {
+        navigate('/users/login');
+    }
 
     return (
-        <div>Start Page</div>
+        <button 
+            style={{ fontSize: '50px', fontWeight: '900', color: 'black',cursor:'pointer' }}
+            onClick={navigateToLogin}
+            >
+            +
+        </button>
+    )
+}
+
+const StartPage = () => {
+
+    useEffect(() => {
+        document.body.style.backgroundImage = `url("/src/assets/background.jpg")`
+    }, [])
+
+    return (
+        <Flex style={{ justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh', }}>
+            <Flex style={{ flexDirection:'column', justifyContent: 'center', alignItems: 'center', width: '70vw', height: '40vw',boxSizing: 'border-box' }} gap={30}>
+                <div style={{ fontSize: '50px', fontWeight: '900', color: 'black' }}>
+                    {"WHO's READING"}
+                </div>
+            <MyComponent/>
+            </Flex>
+        </Flex>
     )
 }
 

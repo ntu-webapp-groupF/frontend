@@ -1,5 +1,5 @@
-import { Flex, Typography, Input, Button, Checkbox, message } from "antd";
-import { useState } from "react";
+import { Flex, Typography, Input, Button, message } from "antd";
+import { useEffect, useState } from "react";
 import { userApi } from '../api/user';
 import { useNavigate } from "react-router-dom";
 
@@ -46,13 +46,30 @@ const RegisterPage = () => {
         if (response.status === 200) {
             onSuccessRegister();
             // Redirect to login page after successful registration
-            navigate('/users/login');
+            // Auto Login
+            const response = await userApi.login(submit_username, submit_password);
+            if( response && response.status === 200 ){
+                navigate('/member');
+            }
+            else {
+                navigate('/users/login');
+            }
         } else {
             onFailRegister(response.data);
             setUsername('');
             setPassword('');
         }
     };
+
+    useEffect(() => {
+        const checkLogined = async () => {
+            const response = await userApi.getCurrentUser();
+            if( response && response.status === 200 ){
+                navigate('/books');
+            }
+        }
+        checkLogined();
+    }, [navigate])
 
     return (
         <Flex
@@ -78,7 +95,7 @@ const RegisterPage = () => {
 
             <Flex direction="column" align="center" justify="center" gap={10}>
                 <Typography.Text style={{ textAlign: 'center', color: 'white', fontSize: '20px', margin: '0' }}>
-                    Just a few more steps and you're done! We hate paperwork, too.
+                    {"Just a few more steps and you're done! We hate paperwork, too."}
                 </Typography.Text>
             </Flex>
                     <Input
