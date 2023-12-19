@@ -87,11 +87,120 @@ const FilterPage = () => {
 
     const fetchMyCollections = async () => {
         const response = await bookApi.getCollectionBooks();
-        console.log(response);
+        
+        if( response && response.status === 200 ){
+            const booksList = await Promise.all(response.data.map(async (book) => {
+                const image_id = book.book.images_list[0].id;
+                const book_id = book.book.id;
+                const profile_image_response = await contentApi.getBookContent(book_id, image_id);
+                if( profile_image_response.status === 200 ){
+                    const profile_image = profile_image_response.data;
+                    const blob = new Blob([Buffer.from(profile_image)]);
+                    const profile_image_url = URL.createObjectURL(blob);
+                    return {
+                        id: book.book.id,
+                        bookname: book.book.bookname,
+                        description: book.book.description,
+                        age: book.book.age,
+                        price: book.book.price,
+                        category_list: book.book.category_list,
+                        profile_image: profile_image_url,
+                        images_list: book.book.images_list,
+                    }
+                } else {
+                    return book.book;
+                }
+            }));
+            setBooks(booksList)
+        }
     }
     const fetchMyPurchased = async () => {
         const response = await bookApi.getPurchasedBooks();
+        
+        if( response && response.status === 200 ){
+            const booksList = await Promise.all(response.data.map(async (book) => {
+                const image_id = book.book.images_list[0].id;
+                const book_id = book.book.id;
+                const profile_image_response = await contentApi.getBookContent(book_id, image_id);
+                if( profile_image_response.status === 200 ){
+                    const profile_image = profile_image_response.data;
+                    const blob = new Blob([Buffer.from(profile_image)]);
+                    const profile_image_url = URL.createObjectURL(blob);
+                    return {
+                        id: book.book.id,
+                        bookname: book.book.bookname,
+                        description: book.book.description,
+                        age: book.book.age,
+                        price: book.book.price,
+                        category_list: book.book.category_list,
+                        profile_image: profile_image_url,
+                        images_list: book.book.images_list,
+                    }
+                } else {
+                    return book.book;
+                }
+            }));
+            setBooks(booksList)
+        }
+    }
+    const fetchMyUploaded = async () => {
+        const response = await bookApi.getUploadedBooks();
+        
+        if( response && response.status === 200 ){
+            const booksList = await Promise.all(response.data.map(async (book) => {
+                const image_id = book.book.images_list[0].id;
+                const book_id = book.book.id;
+                const profile_image_response = await contentApi.getBookContent(book_id, image_id);
+                if( profile_image_response.status === 200 ){
+                    const profile_image = profile_image_response.data;
+                    const blob = new Blob([Buffer.from(profile_image)]);
+                    const profile_image_url = URL.createObjectURL(blob);
+                    return {
+                        id: book.book.id,
+                        bookname: book.book.bookname,
+                        description: book.book.description,
+                        age: book.book.age,
+                        price: book.book.price,
+                        category_list: book.book.category_list,
+                        profile_image: profile_image_url,
+                        images_list: book.book.images_list,
+                    }
+                } else {
+                    return book.book;
+                }
+            }));
+            setBooks(booksList)
+        }
+    }
+    const fetchRecommended = async () => {
+        const response = await bookApi.getRecommendBooks();
         console.log(response);
+        
+        if( response && response.status === 200 ){
+            const booksList = await Promise.all(response.data.map(async (book) => {
+                const image_id = book.book.images_list[0].id;
+                const book_id = book.book.id;
+                const profile_image_response = await contentApi.getBookContent(book_id, image_id);
+                if( profile_image_response.status === 200 ){
+                    const profile_image = profile_image_response.data;
+                    const blob = new Blob([Buffer.from(profile_image)]);
+                    const profile_image_url = URL.createObjectURL(blob);
+                    return {
+                        id: book.book.id,
+                        bookname: book.book.bookname,
+                        description: book.book.description,
+                        age: book.book.age,
+                        price: book.book.price,
+                        category_list: book.book.category_list,
+                        profile_image: profile_image_url,
+                        images_list: book.book.images_list,
+                    }
+                } else {
+                    return book.book;
+                }
+            }));
+            setBooks(booksList)
+        }
     }
 
     useEffect(() => {
@@ -101,6 +210,10 @@ const FilterPage = () => {
             fetchMyCollections();
         } else if( type === 'purchased' ){
             fetchMyPurchased();
+        } else if( type === 'uploaded' ) {
+            fetchMyUploaded();
+        } else if( type === 'recommend' ) {
+            fetchRecommended();
         } else {
             fetchAllBooks();
         }
@@ -114,7 +227,11 @@ const FilterPage = () => {
             return 'My Collection List';
         } else if( type === 'purchased' ){
             return 'My Purchased List';
-        } else {
+        } else if( type === 'uploaded' ){
+            return 'My Uploaded Book List'  
+        } else if( type === 'recommend') {
+            return 'Recommend List'
+        }   else {
             return 'All Books';
         }
     }, [type])

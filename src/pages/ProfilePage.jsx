@@ -48,13 +48,13 @@ const ProfileComponent = () => {
    const { username } = user;
 
    const onClickCollections = () => {
-    console.log('FIND ITS UPLOADED BOOKS');
+    navigate('/books/filter?type=uploaded')
    }
    const onClickPurchased = () => {
-    console.log('FIND ITS PURCHASED BOOKS');
+    navigate('/books/filter?type=purchased')
    }
    const onClickLike = () => {
-    console.log('FINT ITS LIKED BOOKS');
+    navigate('/books/filter?type=recommend')
    }
 
   return (
@@ -88,7 +88,7 @@ const ProfileComponent = () => {
         <Button onClick={onClickLike} style={{ height: '72px' }} type='text' >
             <Flex gap="large" align='center'>
                 <HeartOutlined style={{fontSize: '48px'}}/>
-                <Typography.Text style={{fontSize: '24px'}}>LIKES</Typography.Text>
+                <Typography.Text style={{fontSize: '24px'}}>VIEW RECOMMEND BOOKS</Typography.Text>
             </Flex>
         </Button>
         <Button style={{ height: '72px' }} type='text' onClick={onLogout} >

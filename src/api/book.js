@@ -70,6 +70,15 @@ export const bookApi = {
             return parseApiResponse(err);
         }
     },
+    async getUploadedBooks(){
+        try{
+            const response = await api.get(BOOK_BASE_URL + '/uploaded');
+            return parseApiResponse(response);
+        }
+        catch(err){
+            return parseApiResponse(err);
+        }
+    },
     async createBooks(formData){
         try{
             const response = await api.post(BOOK_BASE_URL + '/', formData, {

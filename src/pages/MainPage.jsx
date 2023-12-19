@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { bookApi } from "../api/book";
 import { contentApi } from '../api/content';
 import { Buffer } from 'buffer';
@@ -41,14 +41,20 @@ const MainPage = () => {
         }
     }
 
+    const showFiveBooks = useMemo(() => {
+        if( books.length < 5 ) return books;
+        else {
+            return books.slice(0, 5);
+        }
+    }, [books])
+
     useEffect(() => {
         fetchAllBooks();
-        //fetchSuggestedBooks();
     }, [])
 
     return (
         <div className="mainPage">
-            <SuggestedBook books={books}/>
+            <SuggestedBook books={showFiveBooks}/>
             <Section title="CONTINUE READING" books={books}/>
             <Section title="THEME" books={books}/>
             <Section title="MY LIST" books={books}/>

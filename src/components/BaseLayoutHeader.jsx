@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Layout, Typography, Row, Col, Tooltip, Modal, Button, Input } from 'antd';
 import { SearchOutlined, BookOutlined, UserOutlined, ArrowUpOutlined, HomeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { userApi } from "../api/user";
+import { useState } from "react";
 
 const { Header } = Layout;
 const { Title } = Typography;
@@ -61,30 +62,33 @@ const User = () => {
 
 const BaseLayoutHeader = () => {
   const navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState('');
+  const [open, setOpen] = useState(false);
 
   const onClickSearch = () => {
-    Modal.confirm({
-      title: "Search by book's name",
-      content: <Input placeholder="Search" />,
-      okText: 'Search',
-      cancelText: 'Cancel',
-      closable: "true",
-      onOk: () => {
-        console.log('TODO');
-      }
-    })
-    console.log('TODO');
+    setOpen(true);
   }
   const onClickCollections = () => {
-    console.log('TODO');
+    navigate('/books/filter?type=collection')
   }
   const onClickPurchased = () => {
-    console.log('TODO');
+    navigate('/books/filter?type=purchased')
   }
   
 
   return (
     <Header style={{ backgroundColor: '#FFCC99', display: 'flex', justifyContent: 'space-between', paddingLeft: 0, paddingTop: 30, alignItems: 'center' }}>
+      <Modal
+        title="Search by book's name"
+        open={open}
+        okText="Search"
+        cancelText="Cancel"
+        closable={true}
+        onOk={() => {navigate(`/books/filter?type=search&name=${searchValue}`); setOpen(false)}}
+        onCancel={() => setOpen(false)}
+      >
+        <Input placeholder="Search" onChange={(e) => setSearchValue(e.target.value)} />
+      </Modal>
       <Row align="middle" justify="start" gutter={16}>
         <Col>
           <Title level={1} style={{ color: '#FC9F42', margin:'auto',marginBottom:'10px'}}>TaleHug</Title>
