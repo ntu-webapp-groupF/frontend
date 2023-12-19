@@ -18,7 +18,10 @@ const FilterPage = () => {
     const name = searchParams.get('name');
     const [books, setBooks] = useState([]);
     const [spinning, setSpinning] = useState(true);
-
+    const [collectionBooks, setCollectionBooks] = useState([]);
+    const [purchasedBooks, setPurchasedBooks] = useState([]);
+    const [recommendBooks, setRecommendBooks] = useState([]);
+    
     const fetchAllBooks = async () => {
         const response = await bookApi.getAllBooks();
         if( response && response.status === 200 ){
@@ -86,14 +89,112 @@ const FilterPage = () => {
     }, [name])
 
     const fetchMyCollections = async () => {
+    try {
         const response = await bookApi.getCollectionBooks();
-        console.log(response);
+        if (response.status === 200 && response.data) {
+            const bookList = [];
+            for (let i = 0; i < response.data.length; i++) {
+                const book_id = response.data[i].book.id;
+                const image_id = response.data[i].book.images_list[0].id;
+                console.log(image_id);
+                const profile_image_response = await contentApi.getBookContent(book_id, image_id);
+                if (profile_image_response.status === 200) {
+                    const profile_image = profile_image_response.data;
+                    const blob = new Blob([Buffer.from(profile_image)]);
+                    const profile_image_url = URL.createObjectURL(blob);
+                    const book = {
+                        id: response.data[i].book.id,
+                        bookname: response.data[i].book.bookname,
+                        description: response.data[i].book.description,
+                        age: response.data[i].book.age,
+                        price: response.data[i].book.price,
+                        category_list: response.data[i].book.category_list,
+                        profile_image: profile_image_url,
+                        images_list: response.data[i].book.images_list,
+                    };
+                    bookList.push(book);
+                }
+            }
+            setCollectionBooks(bookList);
+        } else {
+            console.error('Failed to fetch collection books:', response);
+        }
+    } catch (error) {
+        console.error('Error fetching collection books:', error);
     }
+};
     const fetchMyPurchased = async () => {
+    try {
         const response = await bookApi.getPurchasedBooks();
-        console.log(response);
+        if (response.status === 200 && response.data) {
+            const bookList = [];
+            for (let i = 0; i < response.data.length; i++) {
+                const book_id = response.data[i].book.id;
+                const image_id = response.data[i].book.images_list[0].id;
+                console.log(image_id);
+                const profile_image_response = await contentApi.getBookContent(book_id, image_id);
+                if (profile_image_response.status === 200) {
+                    const profile_image = profile_image_response.data;
+                    const blob = new Blob([Buffer.from(profile_image)]);
+                    const profile_image_url = URL.createObjectURL(blob);
+                    const book = {
+                        id: response.data[i].book.id,
+                        bookname: response.data[i].book.bookname,
+                        description: response.data[i].book.description,
+                        age: response.data[i].book.age,
+                        price: response.data[i].book.price,
+                        category_list: response.data[i].book.category_list,
+                        profile_image: profile_image_url,
+                        images_list: response.data[i].book.images_list,
+                    };
+                    bookList.push(book);
+                }
+            }
+            setPurchasedBooks(bookList);
+        } else {
+            console.error('Failed to fetch collection books:', response);
+        }
+    } catch (error) {
+        console.error('Error fetching collection books:', error);
     }
+};
 
+    const fetchRecommendBooks= async () => {
+    try {
+        const response = await bookApi.getRecommendBooks();
+        if (response.status === 200 && response.data) {
+            const bookList = [];
+            for (let i = 0; i < response.data.length; i++) {
+                const book_id = response.data[i].book.id;
+                const image_id = response.data[i].book.images_list[0].id;
+                console.log(image_id);
+                const profile_image_response = await contentApi.getBookContent(book_id, image_id);
+                if (profile_image_response.status === 200) {
+                    const profile_image = profile_image_response.data;
+                    const blob = new Blob([Buffer.from(profile_image)]);
+                    const profile_image_url = URL.createObjectURL(blob);
+                    const book = {
+                        id: response.data[i].book.id,
+                        bookname: response.data[i].book.bookname,
+                        description: response.data[i].book.description,
+                        age: response.data[i].book.age,
+                        price: response.data[i].book.price,
+                        category_list: response.data[i].book.category_list,
+                        profile_image: profile_image_url,
+                        images_list: response.data[i].book.images_list,
+                    };
+                    bookList.push(book);
+                }
+            }
+            setRecommendBooks(bookList);
+        } else {
+            console.error('Failed to fetch collection books:', response);
+        }
+    } catch (error) {
+        console.error('Error fetching collection books:', error);
+    }
+};
+    
     useEffect(() => {
         if( type === 'search' ){
             fetchSearchBooks();
